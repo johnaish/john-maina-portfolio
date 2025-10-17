@@ -7,7 +7,8 @@ SECRET_KEY = 'replace-this-with-a-secure-secret-for-production'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myportfolio-bhtt.onrender.com', '127.0.0.1', 'localhost']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
