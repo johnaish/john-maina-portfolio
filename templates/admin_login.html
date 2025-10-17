@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-md mx-auto mt-12 reveal">
+  <div class="glass p-6 rounded-lg">
+    <h2 class="text-xl font-semibold mb-4">Admin Login</h2>
+    <form method="post">
+      {% csrf_token %}
+      <label>Username</label>
+      <input name="username" class="w-full p-2 rounded bg-gray-800 mt-1" />
+      <label class="mt-2">Password</label>
+      <input name="password" type="password" class="w-full p-2 rounded bg-gray-800 mt-1" />
+      <button class="mt-4 px-4 py-2 rounded-md accent-bg text-black">Login</button>
+    </form>
+    {% if messages %}
+      <ul class="mt-2">
+        {% for message in messages %}<li class="text-red-400">{{ message }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

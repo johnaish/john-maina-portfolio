@@ -1,0 +1,8 @@
+# Add these paths to main/urls.py or include them as shown below:
+from . import views_admin
+
+path('admin-login/', views_admin.user_login, name='admin_login'),
+path('admin-logout/', views_admin.user_logout, name='admin_logout'),
+path('dashboard/', views_admin.dashboard, name='dashboard'),
+path('dashboard/project/new/', views_admin.create_project, name='create_project'),
+path('dashboard/post/new/', views_admin.create_post, name='create_post'),

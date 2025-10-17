@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-2xl mx-auto mt-8 reveal">
+  <div class="glass p-6 rounded">
+    <h2 class="text-xl font-semibold">Create Project</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="mt-2 px-4 py-2 rounded accent-bg text-black">Save</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

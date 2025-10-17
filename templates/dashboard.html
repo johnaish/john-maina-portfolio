@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-8 reveal">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-semibold">Dashboard</h2>
+    <a href="{% url 'admin_logout' %}" class="px-3 py-2 rounded glass">Logout</a>
+  </div>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="glass p-4 rounded">
+      <h3 class="font-semibold mb-2">Projects</h3>
+      <a href="{% url 'create_project' %}" class="px-3 py-2 rounded accent-bg text-black inline-block mb-3">New Project</a>
+      <ul>
+        {% for p in projects %}
+          <div class="mb-2 flex items-center justify-between">
+          <li class="mb-2"><div>{{ p.title }} — {{ p.category }}</div>
+            <div class="flex gap-2"><a href="{% url 'edit_project' p.id %}" class="px-2 py-1 rounded glass">Edit</a><a href="{% url 'delete_project' p.id %}" class="px-2 py-1 rounded bg-red-600">Delete</a></div></li>
+        {% empty %}<li class="text-gray-400">No projects</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="glass p-4 rounded">
+      <h3 class="font-semibold mb-2">Posts</h3>
+      <a href="{% url 'create_post' %}" class="px-3 py-2 rounded accent-bg text-black inline-block mb-3">New Post</a>
+      <ul>
+        {% for post in posts %}
+          <div class="mb-2 flex items-center justify-between">
+          <li class="mb-2"><div>{{ post.title }}</div>
+            <div class="flex gap-2"><a href="{% url 'edit_post' post.id %}" class="px-2 py-1 rounded glass">Edit</a><a href="{% url 'delete_post' post.id %}" class="px-2 py-1 rounded bg-red-600">Delete</a></div></li>
+        {% empty %}<li class="text-gray-400">No posts</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

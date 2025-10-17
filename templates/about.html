@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-12 reveal">
+  <div class="glass p-6 rounded-2xl">
+    <h2 class="text-2xl font-semibold">About Me</h2>
+    <p class="mt-4">{{ profile.bio|default:"I study IT at the University of Embu. I build projects, design graphics, and enjoy learning new technologies." }}</p>
+    <div class="mt-6">
+      <h3 class="font-semibold">Skills</h3>
+      <ul class="mt-2 grid sm:grid-cols-2 gap-2">
+        <li>Python</li>
+        <li>HTML & CSS</li>
+        <li>Django</li>
+        <li>Photoshop / Illustrator</li>
+        <li>UI Design</li>
+        <li>Version Control (Git)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

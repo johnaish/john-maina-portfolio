@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom accent */
+:root { --accent: #9ca3af; }
+.accent { color: var(--accent); }
+.accent-bg { background-color: var(--accent); }

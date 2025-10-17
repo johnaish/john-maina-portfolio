@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-12 reveal">
+  <div class="grid md:grid-cols-2 gap-8">
+    <div class="glass p-6 rounded-2xl">
+      <h2 class="text-2xl font-semibold">Get in touch</h2>
+ <p class="mt-2 text-gray-400">
+  Email:
+  <a href="mailto:jmaish819@gmail.com"
+     class="accent hover:underline"
+     target="_blank"
+     rel="noopener noreferrer">
+     jmaish819@gmail.com
+  </a>
+</p>
+
+<p class="mt-2 text-gray-400">
+  Phone:
+  <a href="tel:+254798533677"
+     class="accent hover:underline">
+     +254 798 533 677
+  </a>
+</p>
+
+      <div class="mt-4">
+        <h3 class="font-semibold">Socials</h3>
+        <ul class="mt-2">
+         
+          <ul class="mt-4 space-y-2">
+  <li>
+    <a href="www.linkedin.com/in/john-maina-2ab974306" 
+       class="hover:accent" 
+       target="_blank" 
+       rel="noopener noreferrer">
+       LinkedIn
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/johnaish" 
+       class="hover:accent" 
+       target="_blank" 
+       rel="noopener noreferrer">
+       GitHub
+    </a>
+  </li>
+  <li>
+    <a href="https://wa.me/254798533677" 
+       class="hover:accent" 
+       target="_blank" 
+       rel="noopener noreferrer">
+       WhatsApp
+    </a>
+  </li>
+</ul>
+
+        </ul>
+      </div>
+    </div>
+
+    <div class="glass p-6 rounded-2xl">
+      <h3 class="text-xl font-semibold">Message me</h3>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="mt-2 px-4 py-2 rounded-md accent-bg text-black">Send</button>
+      </form>
+      {% if messages %}
+        <ul class="mt-4">
+          {% for message in messages %}
+            <li class="text-green-400">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

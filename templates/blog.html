@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-12">
+  <h2 class="text-2xl font-semibold reveal">Blog & Updates</h2>
+  <div class="mt-6 grid gap-4">
+    {% for post in posts %}
+      <article class="glass p-4 rounded-lg reveal">
+        {% if post.image %}
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover rounded">
+        {% endif %}
+        <h3 class="mt-2 font-semibold">{{ post.title }}</h3>
+        <p class="text-sm text-gray-400">{{ post.published_at }}</p>
+        <div class="mt-2">{{ post.content|linebreaks }}</div>
+      </article>
+    {% empty %}
+      <p class="text-gray-400">No posts yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

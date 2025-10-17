@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>John Maina — Portfolio</title>
+  <!-- Tailwind Play CDN for quick styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --accent: #9ca3af; /* grey accent */ }
+    .accent { color: var(--accent); }
+    .accent-bg { background-color: var(--accent); }
+    /* small custom styles */
+    .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(6px); }
+  </style>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/css/tailwind.css">
+</head>
+<body class="bg-gray-900 text-gray-200 leading-relaxed">
+  <header class="p-6">
+    <nav class="container mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-semibold">John Maina</a>
+      <ul class="hidden md:flex gap-6">
+        <li><a href="/" class="hover:accent">Home</a></li>
+        <li><a href="/about/" class="hover:accent">About</a></li>
+        <li><a href="/portfolio/" class="hover:accent">Portfolio</a></li>
+        <li><a href="/blog/" class="hover:accent">Blog</a></li>
+        <li><a href="/contact/" class="hover:accent">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="mt-12 p-6 text-center text-sm text-gray-400">
+    © {{ now.year }} John Maina — IT Student & Graphic Designer
+  </footer>
+
+  <script>
+    // Simple GSAP fade-in for elements with .reveal
+    document.addEventListener('DOMContentLoaded', function(){
+      gsap.utils.toArray('.reveal').forEach(function(el, i){
+        gsap.from(el, {opacity:0, y:30, duration:0.8, delay: i*0.15});
+      });
+    });
+  </script>
+</body>
+</html>

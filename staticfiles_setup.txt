@@ -1,0 +1,6 @@
+For deployment:
+- Whitenoise is included in requirements. Add to MIDDLEWARE:
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+  (near top of MIDDLEWARE)
+- Collect static: python manage.py collectstatic
+- Use environment variables to set SECRET_KEY and DEBUG=False in production.

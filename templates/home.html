@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="grid md:grid-cols-2 gap-8 items-center py-12">
+  <div class="reveal" id="hero-left">
+    <div class="glass p-6 rounded-2xl flex items-center gap-6">
+      {% if profile and profile.photo %}
+        <img src="{{ profile.photo.url }}" alt="Profile photo" id="profile-photo" class="w-40 h-40 object-cover rounded-full border-2 border-gray-700">
+      {% else %}
+        <div id="profile-photo" class="w-40 h-40 rounded-full bg-gray-800 flex items-center justify-center text-xl">Upload</div>
+      {% endif %}
+
+      <div>
+        <h1 class="text-3xl font-bold">
+          Hi, I'm
+          <span class="accent">
+            {% if profile %}
+              {{ profile.name }}
+            {% else %}
+              John Maina
+            {% endif %}
+          </span>
+        </h1>
+
+        {% if profile %}
+          <p class="mt-2 text-lg">{{ profile.tagline }}</p>
+        {% else %}
+          <p class="mt-2 text-lg">IT Student & Visual Creator</p>
+        {% endif %}
+
+        <p class="mt-4 max-w-prose text-gray-300">
+          {{ profile.bio|default:"A passionate IT student from the University of Embu who loves designing clean, modern visuals and building useful applications." }}
+        </p>
+
+        <div class="mt-6 flex gap-4">
+          <a href="/portfolio/" class="px-4 py-2 rounded-md glass border border-gray-700">View Work</a>
+          <a href="/contact/" class="px-4 py-2 rounded-md accent-bg text-black">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" id="hero-right">
+    <h2 class="text-2xl font-semibold mb-4">Featured Projects</h2>
+    <div class="grid sm:grid-cols-2 gap-4">
+      {% for p in featured %}
+        <a href="/project/{{ p.id }}/" class="block glass p-4 rounded-lg hover:scale-105 transition-transform">
+          {% if p.image %}
+  <img src="{{ p.image.url }}" alt="{{ p.title }}" class="w-full h-36 object-cover rounded">
+{% else %}
+  <div class="w-full h-36 flex items-center justify-center bg-gray-800 rounded text-gray-400">
+    No image
+  </div>
+{% endif %}
+          <h3 class="mt-2 font-semibold">{{ p.title }}</h3>
+          <p class="text-sm text-gray-400">{{ p.category }}</p>
+        </a>
+      {% empty %}
+        <p class="text-gray-400">No featured projects yet. Add some via the admin panel.</p>
+      {% endfor %}
+    </div>
+
+    <div class="mt-6">
+      <h3 class="text-xl font-semibold mb-2">Latest Posts</h3>
+      <ul>
+        {% for post in latest_posts %}
+          <li class="mb-2">
+            <a href="/blog/" class="hover:accent">{{ post.title }}</a>
+          </li>
+        {% empty %}
+          <li class="text-gray-400">No posts yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Hero intro animation timeline
+  var tl = gsap.timeline({defaults:{duration:0.8, ease:"power3.out"}});
+  tl.from("#profile-photo",{scale:0.6, opacity:0, rotation:10});
+  tl.from("#hero-left h1",{x:-30, opacity:0}, "-=0.4");
+  tl.from("#hero-left p",{x:-20, opacity:0}, "-=0.4");
+  tl.from("#hero-right .glass", {y:20, opacity:0, stagger:0.12}, "-=0.3");
+});
+</script>
+{% endblock %}

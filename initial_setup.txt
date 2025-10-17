@@ -1,0 +1,8 @@
+After creating virtualenv and installing requirements:
+1. python manage.py makemigrations
+2. python manage.py migrate
+3. python manage.py createsuperuser
+4. Start server: python manage.py runserver
+
+Admin site: /admin/ -> add a Profile instance first (so homepage has data).
+Upload images via admin to see visuals.

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-md mx-auto mt-12 reveal">
+  <div class="glass p-6 rounded">
+    <h2 class="text-xl font-semibold">Delete Post</h2>
+    <p>Are you sure you want to delete <strong>{{ post.title }}</strong>?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="mt-4 px-4 py-2 rounded bg-red-600">Yes, delete</button>
+      <a href="{% url 'dashboard' %}" class="ml-2 px-4 py-2 rounded glass">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
